@@ -5,6 +5,7 @@ import "../chat-room.css";
 import NameModal from "./NameModal";
 import CurrentOnlineUsers from "./CurrentOnlineUsers";
 import RoomHeader from "./RoomHeader";
+import NavBar from "./NavBar";
 import MessageCard from "./MessageCard";
 
 let socket;
@@ -18,6 +19,8 @@ function ChatRoom({ match }) {
   const [chatText, setChatText] = useState("");
   const [isVerified, setIsVerified] = useState(true);
   const [allUsers, setAllUsers] = useState([]);
+  const [roomDetails, setRoomDetails] = useState(false);
+
   useEffect(() => {
     socket = io(`http://localhost:5000`);
     return () => socket.disconnect();
@@ -84,17 +87,15 @@ function ChatRoom({ match }) {
 
   return isVerified ? (
     <div className="chat-room">
+      <NavBar openRoomDetails={setRoomDetails} username={user} />
       {user === "" && <NameModal setUser={setUser} />}
       <div className="chat-window">
         <div className="chat">
           <RoomHeader room={match.params.room} />
-          {/* <header>
-            <h1>{match.params.room}</h1>
-          </header> */}
           <div ref={chatMessages} className="chat-messages"></div>
           <div className="chat-input">
             <form onSubmit={sendMessage}>
-              <h3 id="user">{user}</h3>
+              {/* <h3 id="user">{user}</h3> */}
               <input
                 ref={typeBox}
                 type="text"
@@ -111,9 +112,11 @@ function ChatRoom({ match }) {
           </div>
         </div>
       </div>
-      <div className="connected-users">
-        <CurrentOnlineUsers allUsers={allUsers} />
-      </div>
+      {roomDetails && (
+        <div className="connected-users">
+          <CurrentOnlineUsers allUsers={allUsers} />
+        </div>
+      )}
     </div>
   ) : (
     <Redirect to="/" />

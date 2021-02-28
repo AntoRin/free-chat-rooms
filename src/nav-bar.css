@@ -1,0 +1,68 @@
+@import url("https://fonts.googleapis.com/css2?family=DotGothic16&display=swap");
+
+nav {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  color: white;
+  /* height: 5vh; */
+  margin-bottom: 20px;
+  background: rgb(58, 59, 60);
+}
+
+.user-name-nav {
+  padding: 8px;
+  margin: 8px;
+  font-size: 1.2rem;
+  font-family: "DotGothic16", sans-serif;
+}
+
+.room-details-btn {
+  padding: 8px;
+  margin: 8px;
+}
+
+#roomDetails {
+  font-size: 1.2rem;
+  font-family: "DotGothic16", sans-serif;
+}
+
+.side-nav {
+  position: fixed;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 50px;
+  background: rgba(0, 0, 0, 0.801);
+  color: white;
+
+  z-index: 2;
+}
+
+.side-nav-close-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.side-btns {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  height: 100%;
+}
+
+.icon-safe {
+  background: transparent;
+  color: white;
+  outline: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.mg-bt {
+  margin-bottom: 40px;
+}
