@@ -11,12 +11,12 @@
 .modal {
   width: 600px;
   height: 300px;
-  border: 2px solid lightgoldenrodyellow;
+  box-shadow: 5px 25px 25px black;
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+  background: rgb(40, 40, 50);
 }
 
 .name-input {
@@ -44,10 +44,12 @@
 }
 
 .name-input button {
-  background-color: skyblue;
-  color: black;
+  background-color: rgb(10, 4, 20);
+  color: white;
   width: 100px;
   height: 40px;
   padding: 10px;
   text-align: center;
+  cursor: pointer;
+  border-radius: 20%/50%;
 }

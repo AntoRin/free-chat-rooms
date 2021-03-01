@@ -87,8 +87,12 @@ function ChatRoom({ match }) {
 
   return isVerified ? (
     <div className="chat-room">
-      <NavBar openRoomDetails={setRoomDetails} username={user} />
-      {user === "" && <NameModal setUser={setUser} />}
+      <NavBar
+        openRoomDetails={setRoomDetails}
+        username={user}
+        setUser={setUser}
+      />
+      {user === "" && <NameModal setUser={setUser} label="Name:" />}
       <div className="chat-window">
         <div className="chat">
           <RoomHeader room={match.params.room} />

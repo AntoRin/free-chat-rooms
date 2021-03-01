@@ -66,3 +66,11 @@ nav {
 .mg-bt {
   margin-bottom: 40px;
 }
+
+.modal-closer {
+  position: fixed;
+  top: 20%;
+  right: 15%;
+  z-index: 99;
+  cursor: pointer;
+}

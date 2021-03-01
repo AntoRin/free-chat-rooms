@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import LandingPage from "./LandingPage";
 import RoomForm from "./RoomForm";
 import ChatRoom from "./ChatRoom";
 
@@ -7,7 +8,8 @@ function App() {
     <Router>
       <div>
         <Switch>
-          <Route path="/" exact component={RoomForm} />
+          <Route path="/" exact component={LandingPage} />
+          <Route path="/chatrooms" exact component={RoomForm} />
           <Route path="/chatrooms/:room/:roomId" exact component={ChatRoom} />
           <Route path="/" component={RoomForm} />
         </Switch>

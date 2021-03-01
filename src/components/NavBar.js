@@ -1,12 +1,14 @@
 import { useState } from "react";
 import "../nav-bar.css";
+import NameModal from "./NameModal";
 import LocalCafeIcon from "@material-ui/icons/LocalCafe";
 import SettingsIcon from "@material-ui/icons/Settings";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
 import CloseIcon from "@material-ui/icons/Close";
 
-function NavBar({ username, openRoomDetails }) {
+function NavBar({ username, openRoomDetails, setUser }) {
   const [sideBar, setSideBar] = useState(false);
+  const [settings, setSettings] = useState(false);
 
   function openDetails() {
     openRoomDetails(true);
@@ -37,11 +39,28 @@ function NavBar({ username, openRoomDetails }) {
             >
               <LocalCafeIcon />
             </button>
-            <button className="icon-safe mg-bt">
+            <button
+              className="icon-safe mg-bt"
+              onClick={() => setSettings(true)}
+            >
               <SettingsIcon />
             </button>
           </div>
         </div>
+      )}
+      {settings && (
+        <NameModal
+          setUser={setUser}
+          label="New Name:"
+          changeName={true}
+          setSettings={setSettings}
+        />
+      )}
+      {settings && (
+        <CloseIcon
+          className="modal-closer"
+          onClick={() => setSettings(false)}
+        />
       )}
     </nav>
   );
