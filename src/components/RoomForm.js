@@ -1,5 +1,6 @@
-import { useState } from "react";
-import { useHistory } from "react-router-dom";
+import {useState} from "react";
+import {useHistory} from "react-router-dom";
+import NavGlobal from "./NavGlobal";
 import "../home.css";
 
 function RoomForm() {
@@ -11,8 +12,8 @@ function RoomForm() {
     event.preventDefault();
     let auth = await fetch("http://localhost:5000/auth/token", {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ roomName, password }),
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify({roomName, password}),
     });
     let authToken = await auth.json();
     let roomId = authToken.token;
@@ -28,6 +29,7 @@ function RoomForm() {
 
   return (
     <div className="user-form">
+      <NavGlobal />
       <div className="user-details">
         <form onSubmit={handleSubmit}>
           <div>
@@ -35,6 +37,10 @@ function RoomForm() {
             <input
               autoFocus="on"
               autoComplete="off"
+              pattern="[A-Za-z0-9_]+"
+              maxLength="15"
+              title="Letters, numbers and underscore"
+              required
               type="text"
               name="room-name"
               id="roomName"
@@ -46,6 +52,9 @@ function RoomForm() {
             <label htmlFor="password">Password:</label> <br />
             <input
               autoComplete="off"
+              pattern="[A-Za-z0-9-_.,!@]+"
+              title="Letters, numbers and -_.,!@"
+              required
               type="text"
               name="password"
               id="password"

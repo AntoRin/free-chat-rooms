@@ -4,9 +4,7 @@
   background-color: rgb(18, 18, 18);
   min-height: 100vh;
   padding-bottom: 10px;
-  /* display: flex;
-  flex-direction: column;
-  justify-content: center; */
+  overflow-x: hidden;
 }
 
 .chat-window {
@@ -104,11 +102,11 @@
 
 .connected-users {
   position: fixed;
-  right: 0%;
-  top: 0%;
+  right: 0;
+  top: 0;
+  bottom: 0;
   /* height: 70vh; */
   background: rgba(0, 0, 0, 0.9);
-  bottom: 0;
   font-size: 1.3rem;
   border: 2px solid #2c2f33;
   text-align: center;
@@ -116,4 +114,38 @@
   font-family: "DotGothic16", sans-serif;
   color: white;
   z-index: 3;
+}
+
+.users-list {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  height: 80%;
+}
+
+.users-list header {
+  border-bottom: 2px solid rgb(153, 200, 216);
+}
+
+.users-list::-webkit-scrollbar {
+  width: 5px;
+}
+
+.users-list::-webkit-scrollbar-thumb {
+  background: rgb(77, 77, 77);
+}
+
+.users-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.users-list::-webkit-scrollbar-track {
+  box-shadow: 5px 5px 10px black;
+}
+
+.room-type {
+  position: absolute;
+  bottom: 0;
+  text-align: center;
+  width: 100%;
+  color: crimson;
 }

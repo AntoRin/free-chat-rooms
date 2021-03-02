@@ -1,7 +1,7 @@
-import { useState } from "react";
+import {useState} from "react";
 import "../name-modal.css";
 
-function NameModal({ setUser, label, changeName, setSettings }) {
+function NameModal({setUser, label, changeName, setSettings}) {
   const [currentName, setCurrentName] = useState("");
 
   function handleChange(event) {
@@ -31,15 +31,15 @@ function NameModal({ setUser, label, changeName, setSettings }) {
               onChange={handleChange}
               autoComplete="off"
               required
-              pattern="[A-Za-z]"
-              title="Anything but nothing"
+              pattern="[A-Za-z0-9-_.,!@]+"
+              title="Letters, numbers and -_.,!@"
               name="modal-username"
               id="modal-username"
               autoFocus="on"
               placeholder="What would you like to be called?"
             />
             <button type="submit" onClick={close}>
-              Go!
+              Let's Go!
             </button>
           </form>
         </div>

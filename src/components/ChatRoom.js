@@ -1,5 +1,5 @@
-import { useEffect, useState, useRef } from "react";
-import { Redirect } from "react-router-dom";
+import {useEffect, useState, useRef} from "react";
+import {Redirect} from "react-router-dom";
 import io from "socket.io-client";
 import "../chat-room.css";
 import NameModal from "./NameModal";
@@ -10,7 +10,7 @@ import MessageCard from "./MessageCard";
 
 let socket;
 
-function ChatRoom({ match }) {
+function ChatRoom({match}) {
   const typeBox = useRef();
   const chatMessages = useRef();
   const [user, setUser] = useState(
@@ -30,8 +30,8 @@ function ChatRoom({ match }) {
     async function acceptUser() {
       let auth = await fetch("http://localhost:5000/auth/verify", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ roomId: match.params.roomId }),
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({roomId: match.params.roomId}),
       });
       let roomStatus = await auth.json();
       //   console.log(roomStatus);
@@ -44,25 +44,29 @@ function ChatRoom({ match }) {
           localStorage.setItem("chat_room_username", user);
         }
       }
+      let isPublic = roomStatus.password ? false : true;
       let userDetails = {
         name: user,
-        room: roomStatus.roomName + roomStatus.password,
+        room:
+          roomStatus.roomName +
+          (roomStatus.password ? roomStatus.password + "vldGxlND14WNzZXJ" : ""),
+        isPublic,
       };
       socket.emit("room", userDetails);
 
-      socket.on("info", (info) => {
+      socket.on("info", info => {
         if (chatMessages.current)
           chatMessages.current.innerHTML += `<div class="chat-font"><strong>Bot:  </strong><i>${info}</i></div>`;
       });
 
-      socket.on("message", (msg) => {
+      socket.on("message", msg => {
         if (chatMessages.current) {
           chatMessages.current.innerHTML += `<div class="chat-font"><strong>${msg.user}:  </strong>${msg.chatText}</div>`;
           chatMessages.current.scrollTop = chatMessages.current.scrollHeight;
         }
       });
 
-      socket.on("allConnectedUsers", (allUsers) => {
+      socket.on("allConnectedUsers", allUsers => {
         setAllUsers(allUsers);
       });
     }

@@ -4,6 +4,7 @@ nav {
   width: 100%;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   color: white;
   /* height: 5vh; */
   margin-bottom: 20px;
@@ -15,6 +16,32 @@ nav {
   margin: 8px;
   font-size: 1.2rem;
   font-family: "DotGothic16", sans-serif;
+}
+
+.nav-links-menu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.router-link {
+  font-family: "DotGothic16", sans-serif;
+  font-size: 1.2rem;
+  border: 1px solid lightblue;
+  border-radius: 10px;
+  text-decoration: none;
+  color: white;
+  padding: 3px 8px;
+  margin: 0px 10px;
+}
+
+.router-link-special {
+  font-family: "DotGothic16", sans-serif;
+  font-size: 1.2rem;
+  text-decoration: none;
+  color: white;
+  padding: 3px 8px;
+  margin: 0px 10px;
 }
 
 .room-details-btn {
@@ -35,7 +62,7 @@ nav {
   width: 50px;
   background: rgba(0, 0, 0, 0.801);
   color: white;
-
+  overflow: hidden;
   z-index: 2;
 }
 

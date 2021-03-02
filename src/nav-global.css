@@ -1,0 +1,29 @@
+@import url("https://fonts.googleapis.com/css2?family=DotGothic16&display=swap");
+
+.nav-global {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: "DotGothic16", sans-serif;
+  margin-bottom: 20px;
+  background: rgb(58, 59, 60);
+  color: white;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.253);
+}
+
+.nav-global-left {
+  padding: 8px;
+  margin: 8px;
+}
+
+.nav-global-right {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px;
+  margin: 8px;
+}

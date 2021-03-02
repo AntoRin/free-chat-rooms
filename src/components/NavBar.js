@@ -1,4 +1,5 @@
-import { useState } from "react";
+import {useState} from "react";
+import {Link} from "react-router-dom";
 import "../nav-bar.css";
 import NameModal from "./NameModal";
 import LocalCafeIcon from "@material-ui/icons/LocalCafe";
@@ -6,7 +7,7 @@ import SettingsIcon from "@material-ui/icons/Settings";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
 import CloseIcon from "@material-ui/icons/Close";
 
-function NavBar({ username, openRoomDetails, setUser }) {
+function NavBar({username, openRoomDetails, setUser}) {
   const [sideBar, setSideBar] = useState(false);
   const [settings, setSettings] = useState(false);
 
@@ -21,10 +22,18 @@ function NavBar({ username, openRoomDetails, setUser }) {
   return (
     <nav>
       <div className="user-name-nav">{username}</div>
-      <div className="room-details-btn">
-        <button className="icon-safe" onClick={() => setSideBar(true)}>
-          <MoreVertIcon />
-        </button>
+      <div className="nav-links-menu">
+        <Link className="router-link" to="/">
+          Home
+        </Link>
+        <Link className="router-link" to="/public-chatrooms/live">
+          Public Chat Rooms
+        </Link>
+        <div className="room-details-btn">
+          <button className="icon-safe" onClick={() => setSideBar(true)}>
+            <MoreVertIcon />
+          </button>
+        </div>
       </div>
       {sideBar && (
         <div className="side-nav">

@@ -1,6 +1,37 @@
+import {useState} from "react";
+import {useHistory} from "react-router-dom";
+import {Button} from "@material-ui/core";
+import NavGlobal from "./NavGlobal";
+import "../public-rooms-form.css";
+
 function PublicRoomsForm() {
+  const [roomName, setRoomName] = useState("");
+  const history = useHistory();
+
+  function handleChange(event) {
+    setRoomName(event.target.value);
+  }
+
+  function handleRedirect() {
+    history.push("/public-chatrooms/live");
+  }
+
+  async function handleSubmit(event) {
+    event.preventDefault();
+    let auth = await fetch("http://localhost:5000/auth/token", {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify({roomName}),
+    });
+    let authToken = await auth.json();
+    let roomId = authToken.token;
+    let path = `/chatrooms/${roomName}/${roomId}`;
+    history.push(path);
+  }
+
   return (
     <div className="user-form">
+      <NavGlobal />
       <div className="user-details">
         <form onSubmit={handleSubmit}>
           <div>
@@ -8,6 +39,10 @@ function PublicRoomsForm() {
             <input
               autoFocus="on"
               autoComplete="off"
+              required
+              pattern="[A-Za-z0-9_]+"
+              maxLength="15"
+              title="Letters, numbers and underscore"
               type="text"
               name="room-name"
               id="roomName"
@@ -15,21 +50,15 @@ function PublicRoomsForm() {
               onChange={handleChange}
             />
           </div>
-          <div>
-            <label htmlFor="password">Password:</label> <br />
-            <input
-              autoComplete="off"
-              type="text"
-              name="password"
-              id="password"
-              value={password}
-              onChange={handleChange}
-            />
-          </div>
           <button type="submit" id="createRoom">
             Create
           </button>
         </form>
+      </div>
+      <div className="public-rooms-redirect">
+        <Button variant="contained" color="default" onClick={handleRedirect}>
+          Browse Public Rooms
+        </Button>
       </div>
     </div>
   );

@@ -1,10 +1,39 @@
+html {
+  overflow-x: hidden;
+  min-height: 100vh;
+  height: 100%;
+  width: 100%;
+  background: darkgray;
+  padding: 0;
+  margin: 0;
+}
+
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  overflow-x: hidden;
 }
 
 body {
   min-height: 100vh;
   overflow-x: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: rgb(80, 80, 80);
+}
+
+body::-webkit-scrollbar {
+  width: 10px;
+}
+
+body::-webkit-scrollbar-thumb {
+  background: rgba(82, 82, 82, 0.384);
+}
+
+body::-webkit-scrollbar-track {
+  background: rgb(15, 14, 14);
+}
+
+body::-webkit-scrollbar-track {
+  box-shadow: 5px 5px 10px black;
 }

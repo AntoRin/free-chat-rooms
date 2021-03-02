@@ -1,0 +1,34 @@
+@import url("https://fonts.googleapis.com/css2?family=DotGothic16&display=swap");
+
+.room-list-wrapper {
+  min-height: 100vh;
+  background: rgb(38, 40, 48);
+}
+
+.room-list-container {
+  padding: 100px 20px;
+}
+
+.room-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgb(69, 69, 69);
+  color: white;
+  box-shadow: 5px 5px 15px black;
+  margin: 20px;
+  padding: 20px;
+  font-size: 1.7rem;
+  font-family: "DotGothic16", sans-serif;
+}
+
+.empty-list {
+  height: 100vh;
+  background: rgb(38, 40, 48);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-family: "DotGothic16", sans-serif;
+}

@@ -2,8 +2,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap");
 
 .user-form {
-  min-height: 100vh;
-  min-width: 100vw;
+  height: 100vh;
   background: rgb(38, 40, 40);
   overflow: hidden;
 }
@@ -31,6 +30,7 @@
 .user-details form label {
   font-size: 1.3rem;
   font-family: "DotGothic16", "Poppins", sans-serif;
+  color: white;
 }
 .user-details form button {
   font-size: 1.1rem;
@@ -38,5 +38,13 @@
   margin: 10px;
   background: white;
   font-family: "DotGothic16", "Poppins", sans-serif;
+  text-align: center;
   cursor: pointer;
+}
+
+.public-rooms-redirect {
+  position: absolute;
+  bottom: 5%;
+  left: 50%;
+  transform: translateX(-50%);
 }
