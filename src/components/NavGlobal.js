@@ -11,11 +11,11 @@ function NavGlobal() {
         </Link>
       </div>
       <div className="nav-global-right">
-        <Link className="router-link" to="/">
-          Home
+        <Link className="router-link" to="/public-chatrooms">
+          Public
         </Link>
-        <Link className="router-link" to="/public-chatrooms/live">
-          Public Chat Rooms
+        <Link className="router-link" to="/private-chatrooms">
+          Private
         </Link>
       </div>
     </div>

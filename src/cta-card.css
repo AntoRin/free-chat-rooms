@@ -1,0 +1,54 @@
+.cta-card {
+  border: 2px solid lightblue;
+  border-radius: 10px;
+  height: 400px;
+  width: 300px;
+  position: relative;
+  margin: 30px;
+  transition: 0.3s;
+}
+
+.cta-card:hover {
+  transform: scale(1.1);
+}
+
+.cta-top {
+  position: absolute;
+  width: 100%;
+  top: 5%;
+  color: white;
+}
+
+.cta-icon {
+  width: 50%;
+  height: 50%;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  color: white;
+  padding-bottom: 25px;
+  border-bottom: 2px solid lightblue;
+}
+
+.cta-bottom {
+  position: absolute;
+  bottom: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+  color: white;
+  font-family: "DotGothic16", sans-serif;
+  text-align: center;
+  font-size: 1rem;
+}
+
+@media (max-width: 500px) {
+  .cta-card {
+    width: 250px;
+  }
+}
+
+@media (max-width: 400px) {
+  .cta-card {
+    width: 230px;
+  }
+}

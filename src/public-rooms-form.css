@@ -11,15 +11,17 @@
   position: relative;
   top: 50%;
   transform: translateY(-50%);
-  max-width: 100%;
+  /* max-width: 80%; */
+  width: 100%;
   display: flex;
   justify-content: center;
 }
 
 .user-details form {
+  max-width: 80%;
   padding: 40px 60px;
-  box-shadow: 3px 3px 7px;
-  background: rgb(49, 51, 46);
+  box-shadow: 3px 10px 10px;
+  background: rgba(49, 51, 46, 0.747);
 }
 
 .user-details form input {
@@ -44,7 +46,7 @@
 
 .public-rooms-redirect {
   position: absolute;
-  bottom: 5%;
+  bottom: 15%;
   left: 50%;
   transform: translateX(-50%);
 }

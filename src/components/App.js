@@ -4,6 +4,7 @@ import RoomForm from "./RoomForm";
 import PublicRoomsForm from "./PublicRoomsForm";
 import AllPublicRooms from "./AllPublicRooms";
 import ChatRoom from "./ChatRoom";
+import CTACard from "./CTACard";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           />
           <Route path="/private-chatrooms" exact component={RoomForm} />
           <Route path="/chatrooms/:room/:roomId" exact component={ChatRoom} />
+          <Route path="/test" component={CTACard} />
           <Route path="/" component={LandingPage} />
         </Switch>
       </div>

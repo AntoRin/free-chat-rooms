@@ -31,8 +31,9 @@ nav {
   border-radius: 10px;
   text-decoration: none;
   color: white;
-  padding: 3px 8px;
+  padding: 3px 15px;
   margin: 0px 10px;
+  min-width: 70px;
 }
 
 .router-link-special {
@@ -40,8 +41,9 @@ nav {
   font-size: 1.2rem;
   text-decoration: none;
   color: white;
-  padding: 3px 8px;
+  padding: 3px 15px;
   margin: 0px 10px;
+  border-bottom: 1px solid lightblue;
 }
 
 .room-details-btn {
@@ -100,4 +102,28 @@ nav {
   right: 15%;
   z-index: 99;
   cursor: pointer;
+}
+
+@media (max-width: 450px) {
+  .router-link,
+  .router-link-special {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 350px) {
+  .router-link,
+  .router-link-special {
+    font-size: 0.8rem;
+  }
+  .router-link {
+    border-radius: 5px;
+  }
+}
+
+@media (max-width: 300px) {
+  .router-link,
+  .router-link-special {
+    font-size: 0.7rem;
+  }
 }

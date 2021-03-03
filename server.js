@@ -11,7 +11,7 @@ const app = express();
 app.use(cors());
 
 app.use(express.json());
-// app.use(express.static(path.join(__dirname, "build")));
+app.use(express.static(path.join(__dirname, "build")));
 
 app.post("/auth/token", (req, res) => {
   let data = req.body;
@@ -50,6 +50,10 @@ app.get("/public/rooms", (req, res) => {
       res.json({status: "ok", publicRooms});
     }
   });
+});
+
+app.get("*", (req, res) => {
+  res.sendFile("index.html");
 });
 
 const port = process.env.PORT || 5000;
