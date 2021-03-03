@@ -22,13 +22,13 @@ function ChatRoom({match}) {
   const [roomDetails, setRoomDetails] = useState(false);
 
   useEffect(() => {
-    socket = io(`http://localhost:5000`);
+    socket = io();
     return () => socket.disconnect();
   }, []);
 
   useEffect(async () => {
     async function acceptUser() {
-      let auth = await fetch("http://localhost:5000/auth/verify", {
+      let auth = await fetch("/auth/verify", {
         method: "POST",
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify({roomId: match.params.roomId}),

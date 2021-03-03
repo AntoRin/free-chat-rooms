@@ -18,7 +18,7 @@ function PublicRoomsForm() {
 
   async function handleSubmit(event) {
     event.preventDefault();
-    let auth = await fetch("http://localhost:5000/auth/token", {
+    let auth = await fetch("/auth/token", {
       method: "POST",
       headers: {"Content-Type": "application/json"},
       body: JSON.stringify({roomName}),

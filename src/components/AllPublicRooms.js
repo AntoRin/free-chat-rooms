@@ -9,7 +9,7 @@ function AllPublicRooms() {
   const history = useHistory();
 
   useEffect(async () => {
-    let publicData = await fetch("http://localhost:5000/public/rooms");
+    let publicData = await fetch("/public/rooms");
     let rooms = await publicData.json();
     if (rooms.status === "ok") setPublicRooms(rooms.publicRooms);
   }, []);
@@ -23,7 +23,7 @@ function AllPublicRooms() {
         .textContent;
     }
 
-    let auth = await fetch("http://localhost:5000/auth/token", {
+    let auth = await fetch("/auth/token", {
       method: "POST",
       headers: {"Content-Type": "application/json"},
       body: JSON.stringify({roomName}),

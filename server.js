@@ -62,12 +62,14 @@ const server = app.listen(port, () =>
   console.log(`Listening on port ${port}...`)
 );
 
-let io = socketio(server, {
-  cors: {
-    origin: "http://localhost:3000",
-    methods: ["GET", "POST"],
-  },
-});
+// let io = socketio(server, {
+//   cors: {
+//     origin: "http://localhost:3000",
+//     methods: ["GET", "POST"],
+//   },
+// });
+
+let io = socketio(server);
 
 io.on("connection", async socket => {
   console.log("Socket connected");
