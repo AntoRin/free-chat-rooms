@@ -1,12 +1,18 @@
-import {useState, useEffect} from "react";
-import {useHistory} from "react-router-dom";
+import { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import NavGlobal from "./NavGlobal";
 import Button from "@material-ui/core/Button";
+import ActiveChat from "./ActiveChat";
 import "../all-public-rooms.css";
 
-function AllPublicRooms() {
+function AllPublicRooms({ activeRoom }) {
   const [publicRooms, setPublicRooms] = useState([]);
+  const [activeChat, setActiveChat] = useState("");
   const history = useHistory();
+
+  useEffect(() => {
+    setActiveChat(activeRoom);
+  }, [activeRoom]);
 
   useEffect(async () => {
     let publicData = await fetch("/public/rooms");
@@ -25,8 +31,8 @@ function AllPublicRooms() {
 
     let auth = await fetch("/auth/token", {
       method: "POST",
-      headers: {"Content-Type": "application/json"},
-      body: JSON.stringify({roomName}),
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ roomName }),
     });
     let authToken = await auth.json();
     let roomId = authToken.token;
@@ -49,11 +55,17 @@ function AllPublicRooms() {
     <div className="room-list-wrapper">
       <NavGlobal />
       <div className="room-list-container">{renderList(publicRooms)}</div>
+      {activeChat && activeChat !== "" ? (
+        <ActiveChat roomLink={activeChat} />
+      ) : null}
     </div>
   ) : (
     <div className="empty-list">
       <NavGlobal />
       <h1>No chat rooms yet! :(</h1>
+      {activeChat && activeChat !== "" ? (
+        <ActiveChat roomLink={activeChat} />
+      ) : null}
     </div>
   );
 }

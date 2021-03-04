@@ -1,14 +1,20 @@
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import NavGlobal from "./NavGlobal";
 import CTACard from "./CTACard";
 import { Button } from "@material-ui/core";
 import { BiJoystickButton } from "react-icons/bi";
+import ActiveChat from "./ActiveChat";
 import "../landing-page.css";
 
-function LandingPage() {
+function LandingPage({ activeRoom }) {
+  const [activeChat, setActiveChat] = useState("");
   const nextSection = useRef();
   const history = useHistory();
+
+  useEffect(() => {
+    setActiveChat(activeRoom);
+  }, [activeRoom]);
 
   useEffect(() => {
     nextSection.current.style.display = "none";
@@ -79,6 +85,9 @@ function LandingPage() {
           </div>
         </div>
       </div>
+      {activeChat && activeChat !== "" ? (
+        <ActiveChat roomLink={activeChat} />
+      ) : null}
     </div>
   );
 }

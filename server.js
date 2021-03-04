@@ -16,25 +16,25 @@ app.use(express.static(path.join(__dirname, "build")));
 app.post("/auth/token", (req, res) => {
   let data = req.body;
   let token = jwt.sign(data, process.env.SECRET);
-  res.json({status: "ok", token});
+  res.json({ status: "ok", token });
 });
 
 app.post("/auth/verify", (req, res) => {
-  let {roomId} = req.body;
+  let { roomId } = req.body;
   try {
-    let {roomName, password} = jwt.verify(roomId, process.env.SECRET);
-    return res.json({status: "ok", roomName, password});
+    let { roomName, password } = jwt.verify(roomId, process.env.SECRET);
+    return res.json({ status: "ok", roomName, password });
   } catch (error) {
     console.log(error.message);
-    return res.status(401).json({status: "error", message: error.message});
+    return res.status(401).json({ status: "error", message: error.message });
   }
 });
 
 app.get("/public/rooms", (req, res) => {
-  fs.readFile("./connectedUsers.json", {encoding: "utf-8"}, (err, data) => {
+  fs.readFile("./connectedUsers.json", { encoding: "utf-8" }, (err, data) => {
     if (err) {
       console.log(err);
-      return res.status(500).json({status: "error"});
+      return res.status(500).json({ status: "error" });
     } else {
       let publicRooms = [];
       if (data) {
@@ -44,10 +44,10 @@ app.get("/public/rooms", (req, res) => {
             if (allRooms[room][0].public === true) publicRooms.push(room);
           }
         } else {
-          return res.json({status: "ok", publicRooms});
+          return res.json({ status: "ok", publicRooms });
         }
       }
-      res.json({status: "ok", publicRooms});
+      res.json({ status: "ok", publicRooms });
     }
   });
 });
@@ -127,7 +127,7 @@ io.on("connection", async socket => {
   });
   socket.on("disconnect", () => {
     console.log("disconnected");
-    fs.readFile("./connectedUsers.json", {encoding: "utf-8"}, (err, data) => {
+    fs.readFile("./connectedUsers.json", { encoding: "utf-8" }, (err, data) => {
       if (err) return console.log(err);
       else {
         // console.log("the current chat room is:", chatRoom);

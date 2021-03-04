@@ -1,12 +1,17 @@
-import {useState} from "react";
-import {useHistory} from "react-router-dom";
-import {Button} from "@material-ui/core";
+import { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import NavGlobal from "./NavGlobal";
+import ActiveChat from "./ActiveChat";
 import "../public-rooms-form.css";
 
-function PublicRoomsForm() {
+function PublicRoomsForm({ activeRoom }) {
   const [roomName, setRoomName] = useState("");
+  const [activeChat, setActiveChat] = useState("");
   const history = useHistory();
+
+  useEffect(() => {
+    setActiveChat(activeRoom);
+  }, [activeRoom]);
 
   function handleChange(event) {
     setRoomName(event.target.value);
@@ -20,8 +25,8 @@ function PublicRoomsForm() {
     event.preventDefault();
     let auth = await fetch("/auth/token", {
       method: "POST",
-      headers: {"Content-Type": "application/json"},
-      body: JSON.stringify({roomName}),
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ roomName }),
     });
     let authToken = await auth.json();
     let roomId = authToken.token;
@@ -59,6 +64,9 @@ function PublicRoomsForm() {
           </p>
         </div>
       </div>
+      {activeChat && activeChat !== "" ? (
+        <ActiveChat roomLink={activeChat} />
+      ) : null}
     </div>
   );
 }

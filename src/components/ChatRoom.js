@@ -1,5 +1,5 @@
-import {useEffect, useState, useRef} from "react";
-import {Redirect} from "react-router-dom";
+import { useEffect, useState, useRef } from "react";
+import { Redirect, useHistory } from "react-router-dom";
 import io from "socket.io-client";
 import "../chat-room.css";
 import NameModal from "./NameModal";
@@ -10,7 +10,7 @@ import MessageCard from "./MessageCard";
 
 let socket;
 
-function ChatRoom({match}) {
+function ChatRoom({ match, setActiveRoom }) {
   const typeBox = useRef();
   const chatMessages = useRef();
   const [user, setUser] = useState(
@@ -21,17 +21,24 @@ function ChatRoom({match}) {
   const [allUsers, setAllUsers] = useState([]);
   const [roomDetails, setRoomDetails] = useState(false);
 
+  const history = useHistory();
+
   useEffect(() => {
     socket = io();
     return () => socket.disconnect();
+  }, []);
+
+  useEffect(() => {
+    let activeChatUrl = history.location.pathname;
+    setActiveRoom(activeChatUrl);
   }, []);
 
   useEffect(async () => {
     async function acceptUser() {
       let auth = await fetch("/auth/verify", {
         method: "POST",
-        headers: {"Content-Type": "application/json"},
-        body: JSON.stringify({roomId: match.params.roomId}),
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ roomId: match.params.roomId }),
       });
       let roomStatus = await auth.json();
       //   console.log(roomStatus);

@@ -1,19 +1,25 @@
-import {useState} from "react";
-import {useHistory} from "react-router-dom";
+import { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import NavGlobal from "./NavGlobal";
+import ActiveChat from "./ActiveChat";
 import "../home.css";
 
-function RoomForm() {
+function RoomForm({ activeRoom }) {
   const history = useHistory();
   const [password, setPassword] = useState("");
   const [roomName, setRoomName] = useState("");
+  const [activeChat, setActiveChat] = useState("");
+
+  useEffect(() => {
+    setActiveChat(activeRoom);
+  }, [activeRoom]);
 
   async function handleSubmit(event) {
     event.preventDefault();
     let auth = await fetch("/auth/token", {
       method: "POST",
-      headers: {"Content-Type": "application/json"},
-      body: JSON.stringify({roomName, password}),
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ roomName, password }),
     });
     let authToken = await auth.json();
     let roomId = authToken.token;
@@ -66,6 +72,9 @@ function RoomForm() {
           </button>
         </form>
       </div>
+      {activeChat && activeChat !== "" ? (
+        <ActiveChat roomLink={activeChat} />
+      ) : null}
     </div>
   );
 }
