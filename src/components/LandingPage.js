@@ -1,14 +1,18 @@
-import {useRef} from "react";
-import {useHistory} from "react-router-dom";
+import { useRef, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import NavGlobal from "./NavGlobal";
 import CTACard from "./CTACard";
-import {Button} from "@material-ui/core";
-import {BiJoystickButton} from "react-icons/bi";
+import { Button } from "@material-ui/core";
+import { BiJoystickButton } from "react-icons/bi";
 import "../landing-page.css";
 
 function LandingPage() {
   const nextSection = useRef();
   const history = useHistory();
+
+  useEffect(() => {
+    nextSection.current.style.display = "none";
+  });
 
   function redirectPrivate() {
     history.push("/private-chatrooms");
@@ -19,6 +23,7 @@ function LandingPage() {
   }
 
   function scrollSection() {
+    nextSection.current.style.display = "block";
     nextSection.current.scrollIntoView();
   }
 

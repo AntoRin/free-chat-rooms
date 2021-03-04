@@ -15,6 +15,7 @@
   width: 100%;
   display: flex;
   justify-content: center;
+  overflow: visible;
 }
 
 .user-details form {
@@ -22,6 +23,10 @@
   padding: 40px 60px;
   box-shadow: 3px 10px 10px;
   background: rgba(49, 51, 46, 0.747);
+}
+
+.user-details > form > div {
+  overflow: visible;
 }
 
 .user-details form input {
@@ -33,6 +38,7 @@
   font-size: 1.3rem;
   font-family: "DotGothic16", "Poppins", sans-serif;
   color: white;
+  overflow: visible;
 }
 .user-details form button {
   font-size: 1.1rem;
@@ -46,7 +52,14 @@
 
 .public-rooms-redirect {
   position: absolute;
-  bottom: 10%;
+  bottom: -40%;
   left: 50%;
   transform: translateX(-50%);
+}
+
+.redirect-btn-simple {
+  font-size: 1.2rem;
+  font-family: "DotGothic16", sans-serif;
+  border-bottom: 1px solid skyblue;
+  color: white;
 }

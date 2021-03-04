@@ -37,7 +37,6 @@ function PublicRoomsForm() {
           <div>
             <label htmlFor="room-name">Room Name:</label> <br />
             <input
-              autoFocus="on"
               autoComplete="off"
               required
               pattern="[A-Za-z0-9_]+"
@@ -54,11 +53,11 @@ function PublicRoomsForm() {
             Create
           </button>
         </form>
-      </div>
-      <div className="public-rooms-redirect">
-        <Button variant="contained" color="default" onClick={handleRedirect}>
-          Browse Public Rooms
-        </Button>
+        <div className="public-rooms-redirect">
+          <p className="redirect-btn-simple" onClick={handleRedirect}>
+            Browse Public Rooms
+          </p>
+        </div>
       </div>
     </div>
   );

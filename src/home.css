@@ -24,6 +24,10 @@
   background: rgba(49, 51, 46, 0.774);
 }
 
+.user-details > form > div {
+  overflow: visible;
+}
+
 .user-details form input {
   padding: 5px;
   margin: 10px;
@@ -32,6 +36,8 @@
 .user-details form label {
   font-size: 1.3rem;
   font-family: "DotGothic16", "Poppins", sans-serif;
+  color: white;
+  overflow: visible;
 }
 .user-details form button {
   font-size: 1.1rem;

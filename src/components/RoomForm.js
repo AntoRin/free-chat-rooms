@@ -35,7 +35,6 @@ function RoomForm() {
           <div>
             <label htmlFor="room-name">Room Name:</label> <br />
             <input
-              autoFocus="on"
               autoComplete="off"
               pattern="[A-Za-z0-9_]+"
               maxLength="15"

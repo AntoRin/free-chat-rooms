@@ -58,6 +58,7 @@
 .landing-card-wrapper {
   position: relative;
   height: 100vh;
+  display: none;
 }
 
 .landing-card {
