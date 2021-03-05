@@ -128,7 +128,7 @@ io.on("connection", async socket => {
     io.to(chatRoom).emit("message", chat);
   });
   socket.on("disconnect", () => {
-    io.to(chatRoom).emit("info", `${room.name} has left the room`);
+    io.to(chatRoom).emit("info", `${theChatRoomUser} has left the room`);
     console.log("disconnected");
     fs.readFile("./connectedUsers.json", { encoding: "utf-8" }, (err, data) => {
       if (err) return console.log(err);
