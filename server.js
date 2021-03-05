@@ -93,6 +93,7 @@ io.on("connection", async socket => {
   if (connectedUsers) parsedList = JSON.parse(connectedUsers);
   else parsedList = {};
   let chatRoom;
+  let theChatRoomUser;
   socket.on("room", async room => {
     // console.log(room);
     if (!parsedList[room.room]) parsedList[room.room] = [];
@@ -117,6 +118,7 @@ io.on("connection", async socket => {
     };
     await promisifiedWriteFile();
     chatRoom = room.room;
+    theChatRoomUser = room.name;
     socket.join(room.room);
     io.to(room.room).emit("info", `${room.name} has joined the room`);
     io.to(room.room).emit("allConnectedUsers", allUsers[room.room]);
@@ -126,6 +128,7 @@ io.on("connection", async socket => {
     io.to(chatRoom).emit("message", chat);
   });
   socket.on("disconnect", () => {
+    io.to(chatRoom).emit("info", `${room.name} has left the room`);
     console.log("disconnected");
     fs.readFile("./connectedUsers.json", { encoding: "utf-8" }, (err, data) => {
       if (err) return console.log(err);

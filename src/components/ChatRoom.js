@@ -63,12 +63,12 @@ function ChatRoom({ match, setActiveRoom }) {
 
       socket.on("info", info => {
         if (chatMessages.current)
-          chatMessages.current.innerHTML += `<div class="chat-font"><strong>Bot:  </strong><i>${info}</i></div>`;
+          chatMessages.current.innerHTML += `<div class="chat-font"><div><strong>Bot</strong></div><div><i>${info}</i></div></div>`;
       });
 
       socket.on("message", msg => {
         if (chatMessages.current) {
-          chatMessages.current.innerHTML += `<div class="chat-font"><strong>${msg.user}:  </strong>${msg.chatText}</div>`;
+          chatMessages.current.innerHTML += `<div class="chat-font"><div><strong>${msg.user}</strong></div><div>${msg.chatText}</div></div>`;
           chatMessages.current.scrollTop = chatMessages.current.scrollHeight;
         }
       });
